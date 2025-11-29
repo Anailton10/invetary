@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}listar produto{% endblock %}
+{% block content %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.quantity }}</td>
+                {% if product.status %}
+                    <td>Ativo</td>
+                {% else %}
+                    <td>Inativo</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'products:create' %}"><button type="button" class="btn btn-primary">Cadastrar Produto</button></a>
+{% endblock content %}
